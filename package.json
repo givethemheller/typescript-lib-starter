@@ -25,8 +25,8 @@
     "yarn": "^1.0"
   },
   "scripts": {
-    "postinstall": "node scripts/init",
     "cleanup": "shx rm -rf dist",
+    "storybook": "start-storybook -p 6006 -c .storybook",
     "prebuild": "npm run cleanup && npm run verify",
     "build": "tsc && tsc --target es2018 --outDir dist/esm2015 && rollup -c config/rollup.config.js && rollup -c config/rollup.config.js --environment NODE_ENV:production",
     "postbuild": "node scripts/copy && npm run size",
@@ -75,19 +75,25 @@
     ]
   },
   "peerDependencies": {
+    "@material-ui/lab": "4.0.0-alpha.28",
     "tslib": ">=1.9.0"
   },
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "7.6.2",
     "@commitlint/cli": "7.2.1",
     "@commitlint/config-conventional": "7.1.2",
+    "@storybook/react": "5.2.1",
     "@types/chokidar": "1.7.5",
     "@types/jest": "23.3.10",
     "@types/json5": "0.0.30",
     "@types/node": "8.10.*",
     "@types/prettier": "1.15.2",
     "@types/prompts": "1.2.0",
+    "@types/storybook__react": "4.0.2",
     "@types/webpack-config-utils": "2.3.0",
+    "awesome-typescript-loader": "5.2.1",
+    "babel-loader": "8.0.6",
     "brotli-size": "0.0.3",
     "commitizen": "3.0.5",
     "cross-var": "1.1.0",
@@ -102,6 +108,8 @@
     "prettier": "1.15.3",
     "pretty-bytes": "5.1.0",
     "prompts": "2.0.0",
+    "react-docgen-typescript-loader": "3.3.0",
+    "react-docgen-typescript-webpack-plugin": "1.1.0",
     "replace-in-file": "3.4.2",
     "rollup": "0.68.2",
     "rollup-plugin-commonjs": "9.2.0",
